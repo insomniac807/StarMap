@@ -4,12 +4,27 @@ ArrayList<Star> stars = new ArrayList<Star>();
 void setup()
 {
   size(800,800);
-  Table starFile = loadTable("HabHYGG15ly", "headers");
+  loadData();
+  printStars();
+}
+
+void draw()
+{}
+
+void loadData()
+{
+  Table starFile = loadTable("HabHYG15ly.csv", "header");
   for(TableRow row : starFile.rows())
   {
     stars.add(new Star(row));
   }
 }
 
-void draw()
-{}
+void printStars()
+{
+  for(Star star : stars)
+  {
+    star.toString();
+    System.out.println(star);
+  }
+}

@@ -1,7 +1,7 @@
 class Star {
   int hab;
   String displayName;
-  float distance, Xg, Yg, zZ;
+  float distance, Xg, Yg, Zg;
   float absMag;
   
   
@@ -14,6 +14,17 @@ class Star {
     this.Yg = starInfo.getFloat(14);
     this.Zg = starInfo.getFloat(15);
     this.absMag = starInfo.getFloat(16);
+  }
+  
+  String toString()
+  {
+    String habita = String. valueOf(this.hab);
+    String dis = String.valueOf(this.distance);
+    String xg = String.valueOf(this.Xg);
+    String yg = String.valueOf(this.Yg);
+    String zg = String.valueOf(this.Zg);
+    String absmag = String.valueOf(this.absMag);
+    return habita+" "+this.displayName+" "+dis+" "+xg+" "+yg+" "+zg+" "+absMag;
   }
   
 }
