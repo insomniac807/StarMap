@@ -23,7 +23,7 @@ class Star {
     String xg = String.valueOf(this.Xg);
     String yg = String.valueOf(this.Yg);
     String zg = String.valueOf(this.Zg);
-    String absmag = String.valueOf(this.absMag);
+    String absMag = String.valueOf(this.absMag);
     return habita+" "+this.displayName+" "+dis+" "+xg+" "+yg+" "+zg+" "+absMag;
   }
   

@@ -8,12 +8,14 @@ void setup()
   printStars();
 }
 
+
 void draw()
 {
   background(0);
   drawGrid();
   plotStars();
 }
+
 
 void loadData()
 {
@@ -25,6 +27,7 @@ void loadData()
 }
 
 
+
 void printStars()
 {
   for(Star star : stars)
@@ -33,6 +36,7 @@ void printStars()
     System.out.println(star);
   }
 }
+
 
 
 void drawGrid()
@@ -46,26 +50,24 @@ void drawGrid()
    boxWidth = w/10;
    boxHeight = h/10;
    
-   
    pushMatrix();
-   translate(50,50);
-   rect(0,0,w,h);
-   
-   int point1 = 5;
-   int point2 = -5;
-   for(int i=0; i<10; i++)
-   {
-       text(point1, i*boxWidth, 0);
-       line(i*boxWidth, 0, i*boxWidth, h);
-       text(point2, -20, i*boxHeight);
-       line(0, i*boxHeight, w, i*boxHeight);
-       --point1;
-       ++point2;    
-   }
-   text(point1, 10*boxWidth, 0);
-   text(point2, -20, 10*boxWidth);
+     translate(50,50);
+     rect(0,0,w,h);
+     int point1 = 5;
+     int point2 = -5;
+     for(int i=0; i<=10; i++)
+     {
+         text(point1, i*boxWidth, -20);
+         line(i*boxWidth, 0, i*boxWidth, h);
+         text(point2, -20, i*boxHeight);
+         line(0, i*boxHeight, w, i*boxHeight);
+         --point1;
+         ++point2;    
+     }
    popMatrix();
+   
 }//end drawGrid()
+
 
 
 void plotStars()
@@ -75,16 +77,17 @@ void plotStars()
      float px = map(aStar.Xg, -5, 5, 0, w);
      float py = map(aStar.Yg, -5, 5, 0, h);
      pushMatrix();
-     translate(50,50);
-     stroke(255, 255, 0);
-     line(px, py-2, px, py+2);
-     line(px-2, py, px+2, py);
-     stroke(255,0,0);
-     ellipse(px,py, aStar.absMag, aStar.absMag);
-     text(aStar.displayName, px+10, py);
+       translate(50,50);
+       stroke(255, 255, 0);
+       line(px, py-2, px, py+2);
+       line(px-2, py, px+2, py);
+       stroke(255,0,0);
+       ellipse(px,py, aStar.absMag, aStar.absMag);
+       text(aStar.displayName, px+10, py);
      popMatrix();
    }
 }
+
 
 
 void mousePressed()
