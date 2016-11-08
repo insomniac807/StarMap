@@ -46,6 +46,8 @@ void drawGrid()
    boxWidth = w/10;
    boxHeight = h/10;
    
+   
+   pushMatrix();
    translate(50,50);
    rect(0,0,w,h);
    
@@ -62,7 +64,7 @@ void drawGrid()
    }
    text(point1, 10*boxWidth, 0);
    text(point2, -20, 10*boxWidth);
-   
+   popMatrix();
 }//end drawGrid()
 
 
@@ -72,12 +74,24 @@ void plotStars()
    {
      float px = map(aStar.Xg, -5, 5, 0, w);
      float py = map(aStar.Yg, -5, 5, 0, h);
-     
+     pushMatrix();
+     translate(50,50);
      stroke(255, 255, 0);
      line(px, py-2, px, py+2);
      line(px-2, py, px+2, py);
      stroke(255,0,0);
      ellipse(px,py, aStar.absMag, aStar.absMag);
      text(aStar.displayName, px+10, py);
+     popMatrix();
    }
+}
+
+
+void mousePressed()
+{ 
+  float x = pmouseX;
+  float y = pmouseY;
+  stroke(255,255,0);
+  line(mouseX, mouseY, x, y);
+  
 }
