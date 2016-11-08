@@ -1,5 +1,5 @@
 ArrayList<Star> stars = new ArrayList<Star>();
-
+float w,h;
 
 void setup()
 {
@@ -12,6 +12,7 @@ void draw()
 {
   background(0);
   drawGrid();
+  plotStars();
 }
 
 void loadData()
@@ -38,21 +39,45 @@ void drawGrid()
 {
    stroke(120, 0, 170);
    noFill();
-   float w, h;
    w = width-100;
    h = height-100;
    
    float boxWidth, boxHeight;
-   boxWidth = w/11;
-   boxHeight = h/11;
+   boxWidth = w/10;
+   boxHeight = h/10;
    
    translate(50,50);
    rect(0,0,w,h);
    
-   for(int i=0; i<11; i++)
+   int point1 = 5;
+   int point2 = -5;
+   for(int i=0; i<10; i++)
    {
+       text(point1, i*boxWidth, 0);
        line(i*boxWidth, 0, i*boxWidth, h);
+       text(point2, -20, i*boxHeight);
        line(0, i*boxHeight, w, i*boxHeight);
+       --point1;
+       ++point2;    
    }
+   text(point1, 10*boxWidth, 0);
+   text(point2, -20, 10*boxWidth);
    
+}//end drawGrid()
+
+
+void plotStars()
+{
+   for(Star aStar : stars)
+   {
+     float px = map(aStar.Xg, -5, 5, 0, w);
+     float py = map(aStar.Yg, -5, 5, 0, h);
+     
+     stroke(255, 255, 0);
+     line(px, py-2, px, py+2);
+     line(px-2, py, px+2, py);
+     stroke(255,0,0);
+     ellipse(px,py, aStar.absMag, aStar.absMag);
+     text(aStar.displayName, px+10, py);
+   }
 }
